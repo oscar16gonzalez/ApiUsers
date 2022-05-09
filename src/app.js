@@ -1,5 +1,6 @@
 import express from 'express'
 import UserRoutes from './routes/users.routes'
+import MembershipRoutes from './routes/membership.routes'
 
 const app = express()
 
@@ -13,5 +14,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', UserRoutes)
+app.use('/afiliacion', MembershipRoutes)
 
 export default app;
