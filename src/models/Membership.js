@@ -3,7 +3,8 @@ import {Schema, model} from 'mongoose';
 const membershipSchema = new Schema({
     cedula:{
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     nombre:{
         type: String,
@@ -27,7 +28,8 @@ const membershipSchema = new Schema({
     },
     correo:{
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     celular:{
         type: Number,

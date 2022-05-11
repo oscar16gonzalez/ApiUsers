@@ -1,4 +1,5 @@
 import express from 'express'
+import morgan from 'morgan'
 import UserRoutes from './routes/users.routes'
 import MembershipRoutes from './routes/membership.routes'
 
@@ -7,6 +8,7 @@ const app = express()
 //settings
 app.set('port', process.env.PORT || 4000)
 app.use(express.json())
+app.use(morgan('dev'))
 
 //routes
 app.get('/', (req, res) => {
