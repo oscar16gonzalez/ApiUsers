@@ -8,8 +8,9 @@ export const findAllUsers = async (req, res) => {
 
 //crea los usuarios 
 export const createUsers = async (req, res) => {
+    console.log("ingreso ");
     const newUsers = new Users({ nombre: req.body.nombre, apellido: req.body.apellido, correo: req.body.correo, password: req.body.password, 
-        celular: req.body.celular, direccion: req.body.direccion, roles: req.body.roles})
+        celular: req.body.celular, direccion: req.body.direccion,estado: req.body.estado})
     const usersSave = await newUsers.save()
     res.json(usersSave)
 }

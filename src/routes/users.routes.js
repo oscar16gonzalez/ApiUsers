@@ -15,4 +15,4 @@ router.get('/:id', usersController.findOneUser)
 //http://localhost:4000/users/id
 router.delete('/:id', usersController.deleteUser)
 
-export default router;
+export default router; 

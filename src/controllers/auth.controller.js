@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import Role from '../models/Role'
 import config from '../config'
 
+//crea los usuarios 
 export const signUp = async (req, res) => {
 
     const {nombre, apellido, correo, password, celular, direccion, estado, roles} = req.body
@@ -31,9 +32,10 @@ export const signUp = async (req, res) => {
         //expiresIn: 86400 -> para que el token tenga fecha de expiracion en este caso 86400 son 24H
     })
 
-    res.json({token})
+    res.json({token, message: 'User created succesfully'})
 }
 
+//Iniciar sesion 
 export const signIn = async (req, res) => {
     const userFound = await Users.findOne({correo: req.body.correo}).populate('roles')
 
@@ -49,7 +51,7 @@ export const signIn = async (req, res) => {
         //expiresIn: 86400 -> para que el token tenga fecha de expiracion en este caso 86400 son 24H
     })
 
-    res.json({token})
+    res.json({token, message: "Users exist"})
 }
 
 //buscar todos los usuarios
@@ -57,15 +59,6 @@ export const findAllUsers = async (req, res) => {
     const users = await Users.find()
     res.json(users)
 } 
-
-//crea los usuarios 
-/*export const createUsers = async (req, res) => {
-    const newUsers = new Users({ nombre: req.body.nombre, apellido: req.body.apellido, correo: req.body.correo, password: req.body.password, 
-        celular: req.body.celular, direccion: req.body.direccion, roles: req.body.roles})
-    const usersSave = await newUsers.save()
-    res.json(usersSave)
-}*/
-
 
 //Busca un usuario por el id 
 export const findOneUser = async (req, res) => {
