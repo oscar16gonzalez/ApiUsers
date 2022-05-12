@@ -3,12 +3,12 @@ import morgan from 'morgan'
 import cors from 'cors'
 import UserRoutes from './routes/users.routes'
 import MembershipRoutes from './routes/membership.routes'
-import {createRole} from './libs/initialSetup'
+//import {createRole} from './libs/initialSetup'
 import authRoutes from './routes/auth.routes'
 
 
 const app = express()
-createRole();
+//createRole();
 
 //settings
 app.set('port', process.env.PORT || 4000)

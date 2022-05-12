@@ -36,6 +36,7 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId
         
     }]
+    
 },{
     versionKey: false,
     timestamps: true

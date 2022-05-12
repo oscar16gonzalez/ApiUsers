@@ -17,6 +17,9 @@ export const signUp = async (req, res) => {
         celular,
         direccion,
         estado,
+        
+        
+        
     })
 
     if(roles) {
@@ -26,7 +29,6 @@ export const signUp = async (req, res) => {
     }
 
     const savedUSers = await newUsers.save()
-    console.log(savedUSers)
 
     const token = jwt.sign({id: savedUSers._id}, config.SECRET, {
         //expiresIn: 86400 -> para que el token tenga fecha de expiracion en este caso 86400 son 24H
