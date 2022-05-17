@@ -1,43 +1,45 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const userSchema = new Schema({
-    nombre:{
+    nombre: {
         type: String,
         required: true
     },
-    apellido:{
+    apellido: {
         type: String,
         required: true
     },
-    correo:{
+    correo: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
         required: true
     },
-    celular:{
+    celular: {
         type: Number,
         required: true
     },
-    direccion:{
+    direccion: {
         type: String,
         required: true
     },
-    estado:{
+    estado: {
         type: Boolean,
         required: true
     },
-    roles:[{
-        ref: 'Role',
-        type: Schema.Types.ObjectId
-        
-    }]
-    
-},{
+    roles: {
+        type: String,
+        required: true
+    },
+    proyectos: {
+        type: String,
+    }
+
+}, {
     versionKey: false,
     timestamps: true
 })
@@ -51,4 +53,4 @@ userSchema.statics.comparePassword = async (password, recivedPassword) => {
     return await bcrypt.compare(password, recivedPassword)
 }
 
-export default model('Users',userSchema)
+export default model('Users', userSchema)

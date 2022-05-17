@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import { Router } from 'express';
 import * as usersController from '../controllers/users.controller'
 const router = Router()
 
@@ -6,7 +6,7 @@ const router = Router()
 router.get('/', usersController.findAllUsers)
 
 //http://localhost:4000/users
-router.post('/',usersController.createUsers)
+router.post('/', usersController.createUsers)
 
 //http://localhost:4000/users/id
 router.get('/:id', usersController.findOneUser)
@@ -14,5 +14,6 @@ router.get('/:id', usersController.findOneUser)
 
 //http://localhost:4000/users/id
 router.delete('/:id', usersController.deleteUser)
+
 
 export default router; 
