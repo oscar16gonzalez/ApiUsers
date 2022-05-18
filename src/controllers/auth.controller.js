@@ -7,8 +7,6 @@ import config from '../config'
 export const signUp = async (req, res) => {
 
     const { nombre, apellido, correo, password, celular, direccion, estado, roles, proyectos } = req.body
-
-
     const newUsers = new Users({
         nombre,
         apellido,
@@ -61,8 +59,12 @@ export const signIn = async (req, res) => {
 
 //buscar todos los usuarios
 export const findAllUsers = async (req, res) => {
-    const users = await Users.find()
-    res.json(users)
+    try {
+        const users = await Users.find()
+        res.json(users)
+    } catch (error) {
+        res.status(500).send('Users not founds')
+    }
 }
 
 //Busca un usuario por el correo 
@@ -85,16 +87,23 @@ export const findOneUser = async (req, res) => {
 
 //borra los usuarios por correo 
 export const deleteUser = async (req, res) => {
-    await Users.findOneAndDelete(req.params.correo)
-    res.json({
-        message: 'User were deleted successfully'
-    })
+    try {
+        await Users.findOneAndDelete(req.params.correo)
+        res.json({
+            message: 'User were deleted successfully'
+        })
+    } catch (error) {
+        res.status(500).send('Error deleting user')
+    }
 }
 
 //Actualizar campo proyectos por correo
 export const UpdateUsers = async (req, res) => {
-    const { proyectos } = req.body
-
-    const upadateUser = await Users.findOneAndUpdate(req.params.correo, { proyectos })
-    res.json(upadateUser)
+    try {
+        const { proyectos } = req.body
+        const upadateUser = await Users.findOneAndUpdate(req.params.correo, { proyectos })
+        res.json(upadateUser)
+    } catch (error) {
+        res.status(500).send('error updating user')
+    }
 }
