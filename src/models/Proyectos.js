@@ -16,9 +16,34 @@ const proyectSchema = new Schema({
         required: true
     },
 
-    interventoria: {
+    nit: {
         type: String,
         required: true
+    },
+
+    integrantes: {
+        type: Object,
+        required: true
+    },
+
+    plazo_ejecucion: {
+        type: String,
+        required: true
+    },
+
+    forma_pago: {
+        type: String,
+        required: true
+    },
+
+    anticipo: {
+        type: String,
+        required: true
+    },
+
+    interventoria: {
+        type: Object,
+
     },
 
     entidad: {
@@ -36,7 +61,22 @@ const proyectSchema = new Schema({
         required: true
     },
 
+    url_ubicacion: {
+        type: String,
+        required: true
+    },
+
     municipio: {
+        type: String,
+        required: true
+    },
+
+    lugar_suscripcion: {
+        type: String,
+        required: true
+    },
+
+    fecha_suscripcion: {
         type: String,
         required: true
     },

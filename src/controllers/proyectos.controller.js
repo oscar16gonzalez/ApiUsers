@@ -5,8 +5,11 @@ export const createProyects = async (req, res) => {
     try {
         const newProyect = new Proyect({
             contrato: req.body.contrato, objeto_contrato: req.body.objeto_contrato, contratista: req.body.contratista,
-            interventoria: req.body.interventoria, entidad: req.body.entidad, valor_contrato: req.body.valor_contrato,
-            departamento: req.body.departamento, municipio: req.body.municipio, usuarios: req.body.usuarios
+            nit: req.body.nit, integrantes: req.body.integrantes, plazo_ejecucion: req.body.plazo_ejecucion,
+            forma_pago: req.body.forma_pago, anticipo: req.body.anticipo, interventoria: req.body.interventoria,
+            entidad: req.body.entidad, valor_contrato: req.body.valor_contrato, departamento: req.body.departamento,
+            municipio: req.body.municipio, url_ubicacion: req.body.url_ubicacion, lugar_suscripcion: req.body.lugar_suscripcion,
+            fecha_suscripcion: req.body.fecha_suscripcion, usuarios: req.body.usuarios
         })
 
         const proyectSave = await newProyect.save()
