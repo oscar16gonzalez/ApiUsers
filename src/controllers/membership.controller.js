@@ -1,4 +1,17 @@
 import Membership from '../models/Membership'
+import multer from 'multer'
+import { multerConfig } from '../utils/multerConfig'
+
+const upload = multer(multerConfig).single('image')
+
+/*exports.fileUpload = (req, res, next) => {
+    upload(req, res, function (error) {
+        if (error) {
+            res.json({ message: error });
+        }
+        return next();
+    });
+}*/
 
 //buscar todas las afiliaciones
 export const findAllMembership = async (req, res) => {

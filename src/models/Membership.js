@@ -8,6 +8,14 @@ const membershipSchema = new Schema({
         unique: true
     },
 
+    cedula_frontal: {
+        type: String,
+    },
+
+    cedula_posterior: {
+        type: String,
+    },
+
     nombre: {
         type: String,
         required: true
@@ -131,5 +139,7 @@ const membershipSchema = new Schema({
     versionKey: false,
     timestamps: true
 })
+
+
 
 export default model('Membership', membershipSchema)
