@@ -16,6 +16,10 @@ router.post('/', membershipController.createMembership)
 router.delete('/:cedula', membershipController.deleteMembership)
 
 //http://localhost:4000/afiliacion/cedula
-router.get('/:cedula', membershipController.findOneMembershipEmail,)
+router.get('/:cedula', membershipController.findOneMembershipEmail, )
+
+//http://localhost:4000/afiliacion/id
+router.put('/:id', membershipController.UpdateStateMembership)
+
 
 export default router;

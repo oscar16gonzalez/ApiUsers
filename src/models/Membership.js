@@ -55,7 +55,7 @@ const membershipSchema = new Schema({
 
     telefono: {
         type: Number,
-        required: true,
+        // required: true,
     },
 
     nombre_emergencia: {

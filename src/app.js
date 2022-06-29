@@ -11,7 +11,7 @@ import multer from 'multer'
 
 
 const app = express()
-//createRole();
+    //createRole();
 
 //settings
 app.set('port', process.env.PORT || 4000)
@@ -26,6 +26,7 @@ app.use(morgan('dev'))
 
 //routes
 app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../../public/dist/index.htm'));
     res.json({ message: 'Welcome' })
 })
 
@@ -35,6 +36,6 @@ app.use('/auth', authRoutes)
 app.use('/proyectosprueba', ProyectRoutesPruebas)
 app.use('/proyectos', ProyectRoutes)
 
-
+app.use(express.static('public/dist'))
 
 export default app;

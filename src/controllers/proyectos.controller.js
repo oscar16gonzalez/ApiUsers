@@ -1,13 +1,20 @@
 import Proyect from "../models/Proyectos";
 
 //Crear los proyectos
-export const createProyects = async (req, res) => {
+export const createProyects = async(req, res) => {
     try {
         const newProyect = new Proyect({
-            contrato: req.body.contrato, objeto_contrato: req.body.objeto_contrato, contratista: req.body.contratista,
-            nit: req.body.nit, nombre_rep_legal: req.body.nombre_rep_legal, cedula_rep_legal: req.body.cedula_rep_legal, plazo_ejecucion: req.body.plazo_ejecucion,
-            valor_contrato: req.body.valor_contrato, departamento: req.body.departamento,
-            municipio: req.body.municipio, usuarios: req.body.usuarios
+            contrato: req.body.contrato,
+            objeto_contrato: req.body.objeto_contrato,
+            contratista: req.body.contratista,
+            nit: req.body.nit,
+            nombre_rep_legal: req.body.nombre_rep_legal,
+            cedula_rep_legal: req.body.cedula_rep_legal,
+            plazo_ejecucion: req.body.plazo_ejecucion,
+            valor_contrato: req.body.valor_contrato,
+            departamento: req.body.departamento,
+            municipio: req.body.municipio,
+            usuarios: req.body.usuarios
         })
 
         const proyectSave = await newProyect.save()
@@ -20,7 +27,7 @@ export const createProyects = async (req, res) => {
 
 
 //Buscar todos los proyectos
-export const findAllProyects = async (req, res) => {
+export const findAllProyects = async(req, res) => {
     try {
         const proyect = await Proyect.find()
         res.json(proyect)
@@ -30,24 +37,29 @@ export const findAllProyects = async (req, res) => {
 }
 
 //buscra por nombre del contrato
-export const findOneProyectByName = async (req, res) => {
-    try {
-        const proyect = await Proyect.find({ contrato: req.params.contrato })
-        console.log(proyect)
+// export const findOneProyectByName = async(req, res) => {
+//         try {
+//             const proyect = await Proyect.find({ contrato: req.params.contrato })
+//             console.log(proyect)
 
-        if (Proyect.length === 0) {
-            res.status(400).send('Project not found')
-        } else {
-            res.json(proyect)
-        }
-    } catch (error) {
-        console.error(error)
-        res.status(500).send('Project not found')
-    }
-}
+//             if (Proyect.length === 0) {
+//                 res.status(400).send('Project not found')
+//             } else {
+//                 res.json(proyect)
+//             }
+//         } catch (error) {
+//             console.error(error)
+//             res.status(500).send('Project not found')
+//         }
+//     }
 //Borrar proyecto por id 
 
-export const deleteProyect = async (req, res) => {
+export const findOneProyect = async(req, res) => {
+    const proyect = await Proyect.findById(req.params.id)
+    res.json(proyect)
+}
+
+export const deleteProyect = async(req, res) => {
     try {
         await Proyect.findByIdAndDelete(req.params.id)
         res.json({

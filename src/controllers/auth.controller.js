@@ -4,7 +4,7 @@ import Role from '../models/Role'
 import config from '../config'
 
 //crea los usuarios 
-export const signUp = async (req, res) => {
+export const signUp = async(req, res) => {
 
     const { nombre, apellido, correo, password, celular, direccion, estado, roles, proyectos } = req.body
     const newUsers = new Users({
@@ -39,7 +39,7 @@ export const signUp = async (req, res) => {
 }
 
 //Iniciar sesion 
-export const signIn = async (req, res) => {
+export const signIn = async(req, res) => {
     const userFound = await Users.findOne({ correo: req.body.correo }).populate('roles')
 
     if (!userFound) return res.json({
@@ -58,7 +58,7 @@ export const signIn = async (req, res) => {
 }
 
 //buscar todos los usuarios
-export const findAllUsers = async (req, res) => {
+export const findAllUsers = async(req, res) => {
     try {
         const users = await Users.find()
         res.json(users)
@@ -68,7 +68,7 @@ export const findAllUsers = async (req, res) => {
 }
 
 //Busca un usuario por el correo 
-export const findOneUser = async (req, res) => {
+export const findOneUser = async(req, res) => {
     try {
 
         const users = await Users.find({ correo: req.params.correo })
@@ -86,7 +86,7 @@ export const findOneUser = async (req, res) => {
 }
 
 //borra los usuarios por correo 
-export const deleteUser = async (req, res) => {
+export const deleteUser = async(req, res) => {
     try {
         await Users.findOneAndDelete(req.params.correo)
         res.json({
@@ -98,10 +98,10 @@ export const deleteUser = async (req, res) => {
 }
 
 //Actualizar campo proyectos por correo
-export const UpdateUsers = async (req, res) => {
+export const UpdateUsers = async(req, res) => {
     try {
         const { proyectos } = req.body
-        const upadateUser = await Users.findOneAndUpdate(req.params.correo, { proyectos })
+        const upadateUser = await Users.findByIdAndUpdate(req.params.id, { proyectos })
         res.json(upadateUser)
     } catch (error) {
         res.status(500).send('error updating user')

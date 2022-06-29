@@ -1,5 +1,5 @@
 import { Router } from "express";
-import *as authController from '../controllers/auth.controller'
+import * as authController from '../controllers/auth.controller'
 const router = Router()
 
 //http://localhost:4000/auth
@@ -9,7 +9,7 @@ router.get('/', authController.findAllUsers)
 
 //http://localhost:4000/auth/correo
 router.get('/:correo', authController.findOneUser)
-router.put('/:correo', authController.UpdateUsers)
+router.put('/:id', authController.UpdateUsers)
 
 //http://localhost:4000/auth/correo
 router.delete('/:correo', authController.deleteUser)
