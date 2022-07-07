@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { string } from 'sharp/lib/is';
 
 const membershipSchema = new Schema({
     //-------DATOS BASICOS--------
@@ -44,12 +45,26 @@ const membershipSchema = new Schema({
 
     correo: {
         type: String,
-        required: true,
+        // required: true,
         unique: true
     },
 
     celular: {
         type: Number,
+        required: true,
+    },
+
+    telefono: {
+        type: Number,
+        // required: true,
+    },
+    whatsapp: {
+        type: String,
+        required: true,
+    },
+
+    telegram: {
+        type: String,
         required: true,
     },
 
@@ -64,7 +79,7 @@ const membershipSchema = new Schema({
     },
 
     celular_emergencia: {
-        type: Number,
+        type: String,
         required: true
     },
 
@@ -121,6 +136,11 @@ const membershipSchema = new Schema({
 
     },
 
+    cesantias: {
+        type: String,
+
+    },
+
     //------DATOS BANCARIOS
     estado: {
         type: String,
@@ -134,6 +154,10 @@ const membershipSchema = new Schema({
     entidad_bancaria: {
         type: String
     },
+
+    proyectos: {
+        type: String,
+    }
 
 }, {
     versionKey: false,

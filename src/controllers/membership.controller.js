@@ -37,6 +37,8 @@ export const createMembership = async(req, res) => {
             correo: req.body.correo,
             celular: req.body.celular,
             telefono: req.body.telefono,
+            whatsapp: req.body.whatsapp,
+            telegram: req.body.telegram,
             fecha_ingreso: req.body.fecha_ingreso,
             examen_ingreso: req.body.examen_ingreso,
             salario: req.body.salario,
@@ -46,12 +48,14 @@ export const createMembership = async(req, res) => {
             eps: req.body.eps,
             arl: req.body.arl,
             fondo_pensiones: req.body.fondo_pensiones,
+            cesantias: req.body.cesantias,
             caja_compensacion: req.body.caja_compensacion,
             curso_alturas: req.body.curso_alturas,
             rut: req.body.rut,
             estado: req.body.estado,
             nombre_emergencia: req.body.nombre_emergencia,
-            celular_emergencia: req.body.celular_emergencia
+            celular_emergencia: req.body.celular_emergencia,
+            proyectos: req.body.proyectos
         })
         const membershipSave = await newMembership.save()
         res.json(membershipSave)
@@ -97,13 +101,48 @@ export const deleteMembership = async(req, res) => {
 }
 
 export const UpdateStateMembership = async(req, res) => {
-    console.log("aca", req.body);
-    // console.log("res", res);
-    try {
-        const { estado } = req.body
-        const upadateState = await Membership.findByIdAndUpdate(req.params.id, { estado })
-        res.json(upadateState)
-    } catch (error) {
-        res.status(500).send('error updating user')
-    }
+    const { id } = req.params
+    const { estado } = req.body
+    const updatedAffiliation = await Membership.findByIdAndUpdate(id, { estado })
+
+    return res.json({
+        message: 'Succesfully update',
+        updatedAffiliation
+    })
+}
+
+export const updateAffiliationById = async(req, res) => {
+    const { id } = req.params
+    const {
+        correo,
+        rut,
+        curso_alturas,
+        examen_ingreso,
+        eps,
+        arl,
+        fondo_pensiones,
+        cesantias,
+        caja_compensacion,
+        entidad_bancaria,
+        numero_cuenta
+    } = req.body
+
+    const updatedAffiliation = await Membership.findByIdAndUpdate(id, {
+        correo,
+        rut,
+        curso_alturas,
+        examen_ingreso,
+        eps,
+        arl,
+        fondo_pensiones,
+        cesantias,
+        caja_compensacion,
+        entidad_bancaria,
+        numero_cuenta
+    })
+
+    return res.json({
+        message: 'Succesfully update',
+        updatedAffiliation
+    })
 }

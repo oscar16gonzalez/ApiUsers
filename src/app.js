@@ -14,7 +14,7 @@ const app = express()
     //createRole();
 
 //settings
-app.set('port', process.env.PORT || 4000)
+app.set('port', process.env.PORT || 3000)
 app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))

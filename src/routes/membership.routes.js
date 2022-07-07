@@ -21,5 +21,7 @@ router.get('/:cedula', membershipController.findOneMembershipEmail, )
 //http://localhost:4000/afiliacion/id
 router.put('/:id', membershipController.UpdateStateMembership)
 
+router.put('/update/:id', membershipController.updateAffiliationById)
+
 
 export default router;
